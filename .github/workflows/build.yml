@@ -35,11 +35,15 @@ jobs:
  #       with:
  #         languages: cpp
  #         queries: security-and-quality
-
-      - run: |
+      - name: Build the example
+        run: |
           . <(curl https://aka.ms/vcpkg-init.sh -L)
           vcpkg activate
           cbuild get_started.csolution.yml --packs --update-rte --configuration .debug+vht
+      
+      - name: Run the example
+        run: |
+          /home/opt/VHT/VHT_MPS2_Cortex-M3 -f vht-config.txt -a hello/out/hello/debug/vht/debug+vht.elf
 
 #      - name: Perform CodeQL Analysis
 #        uses: github/codeql-action/analyze@v2
