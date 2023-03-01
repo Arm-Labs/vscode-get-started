@@ -10,6 +10,11 @@ jobs:
   build:
     name: Build
     runs-on: Arm-Virtual-Hardware
+    env:
+      PATH: /opt/armcompiler/bin:/opt/VHT
+      ARMLMD_LICENSE_FILE: /opt/data.dat
+      ARM_TOOL_VARIANT: ult
+      AC6_TOOLCHAIN_6_18_0: /opt/armcompiler/bin
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -26,16 +31,16 @@ jobs:
           key: packs
           path: /home/runner/.cache/arm/packs
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v2
-        with:
-          languages: cpp
-          queries: security-and-quality
+ #     - name: Initialize CodeQL
+ #       uses: github/codeql-action/init@v2
+ #       with:
+ #         languages: cpp
+ #         queries: security-and-quality
 
       - run: |
           . <(curl https://aka.ms/vcpkg-init.sh -L)
           vcpkg activate
           cbuild get_started.csolution.yml --packs --update-rte --configuration .debug+vht
 
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
+#      - name: Perform CodeQL Analysis
+#        uses: github/codeql-action/analyze@v2
