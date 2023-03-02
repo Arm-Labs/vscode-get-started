@@ -36,7 +36,7 @@ jobs:
         with:
           languages: cpp
           queries: security-and-quality
-      - name: Build the example with GCC
+      - name: Build the example
         run: |
           . <(curl https://aka.ms/vcpkg-init.sh -L)
           vcpkg activate
@@ -45,6 +45,6 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
 
-     - name: Run the example
+      - name: Run the example
         run: |
           /opt/VHT/VHT_MPS2_Cortex-M3 -f vht-config.txt -a hello/out/hello/debug/vht/debug+vht.elf
