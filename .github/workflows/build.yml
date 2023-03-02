@@ -5,16 +5,18 @@ on:
     branches: [main]
   push:
     branches: [main]
+env:
+  ARMLMD_LICENSE_FILE: /opt/data.dat
+  ARM_TOOL_VARIANT: ult
+  AC6_TOOLCHAIN_6_18_0: /opt/armcompiler/bin
+  LD_LIBRARY_PATH: /opt/VHT
+  AVH_PATH: /opt/VHT
 
 jobs:
   build:
-    name: Build
+    name: Build and Run
     runs-on: Arm-Virtual-Hardware
-    env:
-      ARMLMD_LICENSE_FILE: /opt/data.dat
-      ARM_TOOL_VARIANT: ult
-      AC6_TOOLCHAIN_6_18_0: /opt/armcompiler/bin
-      LD_LIBRARY_PATH: /opt/VHT
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -47,4 +49,5 @@ jobs:
 
       - name: Run the example
         run: |
-          /opt/VHT/VHT_MPS2_Cortex-M3 -f vht-config.txt -a hello/out/hello/debug/vht/debug+vht.elf
+           echo "${{AVH_PATH}}" >> $GITHUB_PATH
+           run_example.sh

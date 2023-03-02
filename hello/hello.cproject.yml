@@ -1,6 +1,10 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/Open-CMSIS-Pack/devtools/schemas/projmgr/1.4.0/tools/projmgr/schemas/cproject.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Open-CMSIS-Pack/devtools/schemas/projmgr/1.5.0/tools/projmgr/schemas/cproject.schema.json
 
 project:
+
+  output:
+    - type: elf
+      file: $Project$.$BuildType$+$TargetType$.axf
 
   groups:
     - group: Documentation
