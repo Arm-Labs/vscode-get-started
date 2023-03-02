@@ -49,5 +49,5 @@ jobs:
 
       - name: Run the example
         run: |
-           echo "${{AVH_PATH}}" >> $GITHUB_PATH
+           echo "${{env.AVH_PATH}}" >> $GITHUB_PATH
            run_example.sh
