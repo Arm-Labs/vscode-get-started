@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build and Run
+    name: Build
     runs-on: Arm-Virtual-Hardware
     env:
       ARMLMD_LICENSE_FILE: /opt/data.dat
