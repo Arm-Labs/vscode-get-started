@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Build and Run
     runs-on: Arm-Virtual-Hardware
     env:
       ARMLMD_LICENSE_FILE: /opt/data.dat
@@ -31,20 +31,20 @@ jobs:
           key: packs
           path: /home/runner/.cache/arm/packs
 
- #     - name: Initialize CodeQL
- #       uses: github/codeql-action/init@v2
- #       with:
- #         languages: cpp
- #         queries: security-and-quality
-      - name: Build the example
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: cpp
+          queries: security-and-quality
+      - name: Build the example with GCC
         run: |
           . <(curl https://aka.ms/vcpkg-init.sh -L)
           vcpkg activate
           cbuild get_started.csolution.yml --packs --update-rte --configuration .debug+vht
-      
-      - name: Run the example
-        run: |
-          /opt/VHT/VHT_MPS2_Cortex-M3 -f vht-config.txt -a hello/out/hello/debug/vht/debug+vht.axf
 
-#      - name: Perform CodeQL Analysis
-#        uses: github/codeql-action/analyze@v2
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
+     - name: Run the example
+        run: |
+          /opt/VHT/VHT_MPS2_Cortex-M3 -f vht-config.txt -a hello/out/hello/debug/vht/debug+vht.elf
