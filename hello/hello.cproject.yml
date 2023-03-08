@@ -4,7 +4,7 @@ project:
 
   output:
     - type: elf
-      file: $Project$.$BuildType$+$TargetType$.axf
+      file: $BuildType$+$TargetType$.axf
 
   groups:
     - group: Documentation
