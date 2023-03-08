@@ -2,6 +2,23 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"type": "shell",
+			"label": "Run VHT",
+			"command": "VHT_MPS2_Cortex-M3.exe",
+			"args": [
+				"-f",
+				"vht-config.txt",
+				"${command:cmsis-csolution.getBinaryFile}",
+				"-Q",
+				"10"
+			],
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
 			"type": "cmsis-csolution.build",
 			"project": "${command:cmsis-csolution.getCprjPath}",
 			"problemMatcher": [],
