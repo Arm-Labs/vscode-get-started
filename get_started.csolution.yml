@@ -8,7 +8,7 @@ solution:
     - pack: ARM::CMSIS
 
   target-types:
-    - type: vht                               # runs on Arm Virtual Hardware
+    - type: AVH                               # runs on Arm Virtual Hardware
       device: ARMCM3
                                               # add more hardware targets (don't forget to add the required packs)
 
