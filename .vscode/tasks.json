@@ -3,7 +3,7 @@
 	"tasks": [
 		{
 			"type": "shell",
-			"label": "Run VHT",
+			"label": "Run AVH",
 			"command": "VHT_MPS2_Cortex-M3.exe",
 			"args": [
 				"-f",
