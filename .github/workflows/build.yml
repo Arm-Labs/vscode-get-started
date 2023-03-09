@@ -50,4 +50,4 @@ jobs:
       - name: Run the example
         run: |
            echo "${{env.AVH_PATH}}" >> $GITHUB_PATH
-           /opt/VHT/VHT_MPS2_Cortex-M3  -f ./vht-config.txt -a ./hello/out/hello/debug/vht/debug+vht.axf --stat $*
+           /opt/VHT/VHT_MPS2_Cortex-M3  -f ./vht-config.txt -a ./hello/out/hello/debug/AVH/debug+AVH.axf --stat $*
