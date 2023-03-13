@@ -15,7 +15,7 @@ env:
 jobs:
   build:
     name: Build and Run
-    runs-on: ArmAVHTest
+    runs-on: Arm-Virtual-Hardware
 
     steps:
       - name: Checkout
